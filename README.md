@@ -79,4 +79,4 @@ Please let @lmolkova know if you want to access their AppInsights resources in t
 ## Known Issues
 1. Dependency tracing should be enabled be default, users should not explicitely call `DependencyCollectorDiagnosticListener.Enable()`; @lmolkova is working on ot
 2. There is currently as issue that causing all automatically-generated operations Id to be the same, @lmolkova is working on it. As a workaround, use postman or other browser extension to send request with Request-Id header.
-3. [minor] AppInsights traces does not have an Id
+3. AppInsights traces does not have an Id
