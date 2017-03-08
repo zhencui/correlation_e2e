@@ -48,11 +48,14 @@ You may create your own services from the template or use samples.
 
 #### 2. Go to front-end Application Insights resource in http://ms.portal.azure.com/
   * Open Search blade, wait for the events to appear
-[](https://cloud.githubusercontent.com/assets/2347409/23688963/785a965c-036c-11e7-906b-270042f3940b.PNG)
+  
+![](https://cloud.githubusercontent.com/assets/2347409/23688963/785a965c-036c-11e7-906b-270042f3940b.PNG)
 
   * Click on any event: new blade with event description opens
   * In the new blade, select "All available telemetry for this root operation"
-  ![](https://cloud.githubusercontent.com/assets/2347409/23688967/787609dc-036c-11e7-867a-d97b00159fd3.PNG)
+   
+![](https://cloud.githubusercontent.com/assets/2347409/23688967/787609dc-036c-11e7-867a-d97b00159fd3.PNG)
+
    Note:
     - there is one request event from frontend (request from backend appears in backend AppInsights resource). 
     - there is dependency event for backend call
@@ -60,14 +63,14 @@ You may create your own services from the template or use samples.
     
 #### 3. Search by Request-Id
 
-[](https://cloud.githubusercontent.com/assets/2347409/23688965/78623aec-036c-11e7-8d85-29cc8124af86.PNG)
+![](https://cloud.githubusercontent.com/assets/2347409/23688965/78623aec-036c-11e7-8d85-29cc8124af86.PNG)
 
 #### 4. Analytics (Kusto)
 ```
 union requests, dependencies, traces | where operation_Id == "RD0003FF21406D-18b39d3-1"
 
 ```
-[](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
+![](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
 
 ## Sample AppInsights
 You can play with sample services
@@ -80,3 +83,4 @@ Please let @lmolkova know if you want to access their AppInsights resources in t
 1. Dependency tracing should be enabled be default, users should not explicitely call `DependencyCollectorDiagnosticListener.Enable()`; @lmolkova is working on ot
 2. There is currently as issue that causing all automatically-generated operations Id to be the same, @lmolkova is working on it. As a workaround, use postman or other browser extension to send request with Request-Id header.
 3. AppInsights traces does not have an Id
+4. "Request starting" traces does not have any context
