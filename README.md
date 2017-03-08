@@ -51,16 +51,14 @@ You may create your own services from the template or use samples.
   
 ![](https://cloud.githubusercontent.com/assets/2347409/23688963/785a965c-036c-11e7-906b-270042f3940b.PNG)
 
-  * Click on any event: new blade with event description opens
-  * In the new blade, select "All available telemetry for this root operation"
+  * Click on any event: blade with event description opens, select "All available telemetry for this root operation"
    
 ![](https://cloud.githubusercontent.com/assets/2347409/23688967/787609dc-036c-11e7-867a-d97b00159fd3.PNG)
+Note:
+  * there is one request event from frontend (request from backend appears in backend AppInsights resource). 
+  * there is dependency event for backend call
+  * traces also share the same operation Id and could be correlated.
 
-   Note:
-    - there is one request event from frontend (request from backend appears in backend AppInsights resource). 
-    - there is dependency event for backend call
-    - traces also share the same operation Id and could be correlated.
-    
 #### 3. Search by Request-Id
 
 ![](https://cloud.githubusercontent.com/assets/2347409/23688965/78623aec-036c-11e7-8d85-29cc8124af86.PNG)
