@@ -78,6 +78,5 @@ You can play with sample services
 Please let @lmolkova know if you want to access their AppInsights resources in the portal, I'll give you access.
 
 ## Known Issues
-1. Dependency tracing should be enabled be default, users should not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; @lmolkova is working on ot
-2. There is currently as issue that causing all automatically-generated operations Id to be the same, @lmolkova is working on it. As a workaround, use postman or other browser extension to send request with Request-Id header.
-3. "Request starting" traces do not have any context: this trace is written be AspNetCore and will have context after AspNetCore will implement correlation support.
+1. Dependency tracing should be enabled be default, users should not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; Implementation is planned in AppInsights
+2. "Request starting" traces do not have any context: this trace is written be AspNetCore and will have context after AspNetCore will implement correlation support.
