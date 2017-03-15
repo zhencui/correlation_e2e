@@ -4,7 +4,7 @@ You may create your own services from the template or use samples.
 
 ## Prerequisites
 * [VisualStudio 2017](https://www.visualstudio.com/downloads/)
-* [dotnet cli 2.0.0] (https://github.com/dotnet/cli#installers-and-binaries).
+* [dotnet cli 2.0.0](https://github.com/dotnet/cli#installers-and-binaries)
 
 ## Creating an application
 1. Clone this repo. It contains [template](https://github.com/lmolkova/correlation_e2e/tree/master/template) project that is configured to run on .NET core 2.0 and simulates correlation support in ASP.NET Core. It is self-contained and could be deployed as Azure Web App. It also has AppInsights prototype with correlation support pre-installed.
@@ -41,7 +41,14 @@ You may create your own services from the template or use samples.
    ```
    
  * Publish it or run locally
- 
+
+## Sample services
+You can play with sample services
+- http://frontend-e2e.azurewebsites.net (front-end) and its [AppInsights](https://ms.portal.azure.com/#resource/subscriptions/94a08dfb-8ec7-4234-af9c-0e91eb2045c1/resourceGroups/correlation/providers/microsoft.insights/components/correlation_end2end/overview)
+- http://pingservice-e2e.azurewebsites.net (back-end) and its [Appinsights](https://ms.portal.azure.com/#resource/subscriptions/94a08dfb-8ec7-4234-af9c-0e91eb2045c1/resourceGroups/correlation/providers/microsoft.insights/components/cloudsample/overview)
+
+Please let @lmolkova know if you want to access their AppInsights resources in the portal, I'll give you access.
+
 ## Demo
 
 #### 1. Call front-end service from the browser
@@ -69,13 +76,6 @@ union requests, dependencies, traces | where operation_Id == "RD0003FF21406D-18b
 
 ```
 ![](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
-
-## Sample AppInsights
-You can play with sample services
-- http://frontend-e2e.azurewebsites.net (front-end)
-- http://pingservice-e2e.azurewebsites.net (back-end)
-
-Please let @lmolkova know if you want to access their AppInsights resources in the portal, I'll give you access.
 
 ## Known Issues
 1. Dependency tracing should be enabled be default, users should not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; Implementation is planned in AppInsights
