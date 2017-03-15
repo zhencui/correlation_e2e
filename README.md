@@ -78,5 +78,5 @@ union requests, dependencies, traces | where operation_Id == "RD0003FF21406D-18b
 ![](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
 
 ## Known Issues
-1. Dependency tracing should be enabled be default, users should not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; Implementation is planned in AppInsights
-2. "Request starting" traces do not have any context: this trace is written be AspNetCore and will have context after AspNetCore will implement correlation support.
+1. Dependency tracing will be enabled be default, users will not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; Implementation is planned in AppInsights
+2. "Request starting" traces do not have any context: this trace is written by AspNetCore and will have context after AspNetCore will implement correlation support.
