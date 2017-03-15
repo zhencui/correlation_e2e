@@ -4,7 +4,7 @@ You may create your own services from the template or use samples.
 
 ## Prerequisites
 * [VisualStudio 2017](https://www.visualstudio.com/downloads/)
-* [dotnet cli 2.0.0] (https://github.com/dotnet/cli#installers-and-binaries). Note: it is a breaking change and after this step, you cannot use dotnet cli 1.0.0 and build/run code in VS 2015
+* [dotnet cli 2.0.0] (https://github.com/dotnet/cli#installers-and-binaries).
 
 ## Creating an application
 1. Clone this repo. It contains [template](https://github.com/lmolkova/correlation_e2e/tree/master/template) project that is configured to run on .NET core 2.0 and simulates correlation support in ASP.NET Core. It is self-contained and could be deployed as Azure Web App. It also has AppInsights prototype with correlation support pre-installed.
