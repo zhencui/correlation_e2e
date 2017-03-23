@@ -7,6 +7,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Primitives;
 using System.Linq;
 using System.Net.Http.Headers;
+using System;
 
 namespace PingService
 {
@@ -23,14 +24,11 @@ namespace PingService
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
 
             //temporary, simulates ASP.NET Core Activity creation and events
             AspNetCoreTmp.AspNetDiagnosticListener.Enable();
-
+            int count = -1;
             app.Run(async (context) =>
             {
                 context.Response.Headers.Add("Request-Id", Activity.Current.Id);
@@ -39,7 +37,17 @@ namespace PingService
                     string[] correlationContext = Activity.Current.Baggage.Select(item => new NameValueHeaderValue(item.Key, item.Value).ToString()).ToArray();
                     context.Response.Headers.Add("Correlation-Context", new StringValues(correlationContext));
                 }
-                await context.Response.WriteAsync("Ping!");
+                count++;
+
+                if (count % 5 == 0)
+                {
+                    throw new Exception("Unexpected S3 error occurred");
+                }
+                else
+                {
+                    await context.Response.WriteAsync("Ping!");
+                }
+
             });
         }
     }

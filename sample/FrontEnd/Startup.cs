@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 
 namespace FrontEnd
@@ -21,27 +22,29 @@ namespace FrontEnd
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
 
             //temporary, simulates ASP.NET Core Activity creation and events
             AspNetCoreTmp.AspNetDiagnosticListener.Enable();
 
             //enable Dependency tracking in AI, TODO: move to AppInsights initialization
             Microsoft.ApplicationInsights.DependencyCollector.DependencyCollectorDiagnosticListener.Enable();
-            loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Information); //needed?
+            loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Information); 
 
             var logger = loggerFactory.CreateLogger("RequestLogger");
             HttpClient client = new HttpClient();
             app.Run(async (context) =>
             {
                 var response = await client.GetAsync("http://pingservice-e2e.azurewebsites.net/");
-
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception($"500 Internal Server Error occurred.\r\nCorrelation Id: {Activity.Current.RootId}");
+                }
+                else
+                {
+                    await context.Response.WriteAsync("Hello World!");
+                }
                 logger.LogInformation($"Got response from ping service, status: {response.StatusCode}");
-
-                await context.Response.WriteAsync("Hello World!");
             });
         }
     }
