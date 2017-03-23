@@ -40,11 +40,9 @@ namespace FrontEnd
                 {
                     throw new Exception($"500 Internal Server Error occurred.\r\nCorrelation Id: {Activity.Current.RootId}");
                 }
-                else
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                }
+
                 logger.LogInformation($"Got response from ping service, status: {response.StatusCode}");
+                await context.Response.WriteAsync("Hello World!");
             });
         }
     }

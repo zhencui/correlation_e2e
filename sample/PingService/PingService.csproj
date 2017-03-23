@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RuntimeFrameworkVersion>2.0.0-beta-001509-00</RuntimeFrameworkVersion>
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-    <UserSecretsId>a751b0d1-4549-4e6f-974b-f7da369a3ea0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
