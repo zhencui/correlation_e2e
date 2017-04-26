@@ -22,10 +22,6 @@ namespace PingService
 
             app.UseDeveloperExceptionPage();
 
-            //temporary, simulates ASP.NET Core Activity creation and events
-            AspNetCoreTmp.AspNetDiagnosticListener.Enable();
-
-
             int count = 0;
             app.Run(async (context) =>
             {

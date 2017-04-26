@@ -24,9 +24,6 @@ namespace Template
                 app.UseDeveloperExceptionPage();
             }
 
-            //temporary, simulates ASP.NET Core Activity creation and events
-            AspNetCoreTmp.AspNetDiagnosticListener.Enable();
-
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");

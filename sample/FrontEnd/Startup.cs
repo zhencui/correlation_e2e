@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Reflection;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.DependencyCollector.Implementation;
 
 namespace FrontEnd
 {
@@ -24,11 +27,6 @@ namespace FrontEnd
 
             app.UseDeveloperExceptionPage();
 
-            //temporary, simulates ASP.NET Core Activity creation and events
-            AspNetCoreTmp.AspNetDiagnosticListener.Enable();
-
-            //enable Dependency tracking in AI, TODO: move to AppInsights initialization
-            Microsoft.ApplicationInsights.DependencyCollector.DependencyCollectorDiagnosticListener.Enable();
             loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Information); 
 
             var logger = loggerFactory.CreateLogger("RequestLogger");
