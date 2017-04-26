@@ -20,17 +20,7 @@ You may create your own services from the template or use samples.
 
 3. Create front-end service from the tempate; sample [front-end service](https://github.com/lmolkova/correlation_e2e/tree/master/sample/FrontEnd)
   * Configure AppInsights similarly to front-end service. Note that AppInsights usage model assumes instrumentation-key (and resource) per-application. So backend and frontend would need different keys.
-  * Enable ApplicationInsights dependency (outgoing HTTP requests) tracing. 
-  
-    ```C#
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-    {
-         Microsoft.ApplicationInsights.DependencyCollector.DependencyCollectorDiagnosticListener.Enable();
-         ...
-    }
-    ```
-    
- * Call backend service on incoming request:
+  * Call backend service on incoming request:
  
    ```C#
     app.Run(async (context) =>
@@ -78,5 +68,4 @@ union requests, dependencies, traces | where operation_Id == "RD0003FF21406D-18b
 ![](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
 
 ## Known Issues
-1. Dependency tracing will be enabled be default, users will not explicitly call `DependencyCollectorDiagnosticListener.Enable()`; Implementation is planned in AppInsights
-2. "Request starting" traces do not have any context: this trace is written by AspNetCore and will have context after AspNetCore will implement correlation support.
+1. "Request starting" traces do not have any context: this trace is written by AspNetCore.
