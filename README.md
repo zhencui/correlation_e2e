@@ -68,4 +68,4 @@ union requests, dependencies, traces | where operation_Id == "RD0003FF21406D-18b
 ![](https://cloud.githubusercontent.com/assets/2347409/23688966/786f2eaa-036c-11e7-8703-568d2f02dafb.PNG)
 
 ## Known Issues
-1. "Request starting" traces do not have any context: this trace is written by AspNetCore.
+None!
