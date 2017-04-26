@@ -19,7 +19,7 @@ You may create your own services from the template or use samples.
   * Publish it to Azure WebApp or run locally
 
 3. Create front-end service from the tempate; sample [front-end service](https://github.com/lmolkova/correlation_e2e/tree/master/sample/FrontEnd)
-  * Configure AppInsights similarly to front-end service. Note that AppInsights usage model assumes instrumentation-key (and resource) per-application. So backend and frontend would need different keys.
+  * Configure AppInsights similarly to front-end service. 
   * Call backend service on incoming request:
  
    ```C#
@@ -35,9 +35,9 @@ You may create your own services from the template or use samples.
 ## Sample services
 You can play with sample services
 - http://frontend-e2e.azurewebsites.net (front-end) and its [AppInsights](https://ms.portal.azure.com/#resource/subscriptions/94a08dfb-8ec7-4234-af9c-0e91eb2045c1/resourceGroups/correlation/providers/microsoft.insights/components/correlation_end2end/overview)
-- http://pingservice-e2e.azurewebsites.net (back-end) and its [Appinsights](https://ms.portal.azure.com/#resource/subscriptions/94a08dfb-8ec7-4234-af9c-0e91eb2045c1/resourceGroups/correlation/providers/microsoft.insights/components/cloudsample/overview)
+- http://pingservice-e2e.azurewebsites.net (back-end) and same Appinsights resource
 
-Please let @lmolkova know if you want to access their AppInsights resources in the portal, I'll give you access.
+Please let @lmolkova know if you want to access AppInsights resources in the portal, I'll give you access.
 
 ## Demo
 
