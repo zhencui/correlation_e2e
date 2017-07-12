@@ -30,14 +30,17 @@ namespace FrontEnd
             HttpClient client = new HttpClient();
             app.Run(async (context) =>
             {
-                var response = await client.GetAsync("http://pingservice-e2e.azurewebsites.net/");
-                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                for (var i = 0; i < 2; i++)
                 {
-                    throw new Exception($"500 Internal Server Error occurred.\r\nCorrelation Id: {Activity.Current.RootId}");
-                }
+                    var response = await client.GetAsync(string.Format("http://backend{0}.azurewebsites.net/", i + 3));
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                    {
+                        throw new Exception($"500 Internal Server Error occurred.\r\nCorrelation Id: {Activity.Current.RootId}");
+                    }
 
-                logger.LogInformation($"Got response from ping service, status: {response.StatusCode}");
-                await context.Response.WriteAsync("Hello World!");
+                    logger.LogInformation($"Got response from ping service, status: {response.StatusCode}");
+                    await context.Response.WriteAsync("Hello World!");
+                }
             });
         }
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,10 +27,21 @@ namespace PingService
             int count = 0;
             app.Run(async (context) =>
             {
+                var telemetryClient = new TelemetryClient();
+                telemetryClient.TrackTrace(new TraceTelemetry("Go step 1"));
+
+                telemetryClient.TrackTrace(new TraceTelemetry("Go step 2"));
+
+                telemetryClient.TrackTrace(new TraceTelemetry("Go step 3"));
                 if (count++ % 5 == 0)
                 {
+                    telemetryClient.TrackTrace(new TraceTelemetry("Boom!"));
                     throw new Exception("Unexpected S3 error occurred");
                 }
+
+
+                telemetryClient.TrackTrace(new TraceTelemetry("Go step 4"));
+                telemetryClient.TrackTrace(new TraceTelemetry("Go step 5"));
 
                 await context.Response.WriteAsync("Ping!");
             });
